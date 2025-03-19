@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Provisional Heavy Industry</title>
+    <link rel="stylesheet" href="style/portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <img src="images/logos/logo1.svg" alt="Logo" class="top-logo">
+    <nav class="sidebar-menu">
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <nav class="sidebar">
+        <p class="hover-text">hover navigate</p>
+        <span data-target="project1">PROJECT 1</span>
+        <span data-target="project2">PROJECT 2</span>
+        <span data-target="project3">PROJECT 3</span>
+        <span data-target="project4">PROJECT 4</span>
+        <span data-target="project5">PROJECT 5</span>
+        <span data-target="project6">PROJECT 6</span>
+        <span data-target="project7">PROJECT 7</span>
+        <span data-target="video1">VIDEO PROJECT</span>
+    </nav>
+
+    <div class="mobile-nav">
+        <span data-target="project1"></span>
+        <span data-target="project2"></span>
+        <span data-target="project3"></span>
+        <span data-target="project4"></span>
+        <span data-target="project5"></span>
+        <span data-target="project6"></span>
+        <span data-target="project7"></span>
+        <span data-target="video1"></span>
+    </div>
+
+    <input type="checkbox" id="menuToggle" class="menu-toggle" />
+
+    <label for="menuToggle" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </label>
+
+    <nav class="menu-overlay">
+        <label for="menuToggle" class="close-btn"></label>
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="projects">
+        <section id="project1">
+            <img src="images/projects/project1.jpg" alt="Project 1">
+            <p>Made in blender 4.2, Character made in DAZ3D, rendered in Cycles, Custom skin shader.</p>
+            <p><a href="https://www.artstation.com/artwork/L4aZ8v" class="open-project-link">Open Project</a></p>
+        </section>
+
+        <section id="project2">
+            <img src="images/projects/project2.jpg" alt="Project 2">
+            <p>A render inspired by Max Hay. Made in Blender 4.2, Took 4 hours.</p>
+            <p><a href="https://www.artstation.com/artwork/lDYZ9J" class="open-project-link">Open Project</a></p>
+        </section>
+
+        <section id="project3">
+            <img src="images/projects/project3.jpg" alt="Project 3">
+            <p>GBE from BLAME! 2017. MADE for 3d printing. made in Shapr3d</p>
+            <p><a href="https://www.artstation.com/artwork/YBr6AK" class="open-project-link">Open Project</a></p>
+        </section>
+
+        <section id="project4">
+            <img src="images/projects/project4.jpg" alt="Project 4">
+            <p>UE5 Custom Metahuman Model. Megascans Environment.</p>
+            <p><a href="https://www.artstation.com/artwork/2qwPxK" class="open-project-link">Open Project</a></p>
+
+        </section>
+
+        <section id="project5">
+            <img src="images/projects/project5.jpg" alt="Project 5">
+            <p>10 minute render of some stairs i quickly built with megascans, UE5</p>
+            <p><a href="https://www.artstation.com/artwork/yJ89bQ" class="open-project-link">Open Project</a></p>
+
+        </section>
+
+        <section id="project6">
+            <img src="images/projects/project6.jpg" alt="Project 6">
+            <p>A humanoid robot ranger exploring an unidentified landmark, Blender 10 minute challenge.</p>
+            <p><a href="https://www.artstation.com/artwork/lRWEAJ" class="open-project-link">Open Project</a></p>
+
+        </section>
+
+        <section id="project7">
+            <img src="images/projects/project7.jpg" alt="Project 7">
+            <p>Monolith on the moon, Blender 10 minute challenge</p>
+            <p><a href="https://www.artstation.com/artwork/Le6aGr" class="open-project-link">Open Project</a></p>
+
+        </section>
+
+        <section id="video1">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/UaVGE-sm-TM?si=ngU1h_sgcVGbxlVs"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <p>Animation made in blender and AE for a short film concept.</p>
+            <p><a href="https://www.artstation.com/artwork/zPmrNm" class="open-project-link">Open Project</a></p>
+        </section>
+    </main>
+
+    <script>
+        const links = document.querySelectorAll('.sidebar span');
+        const topLogo = document.querySelector('.top-logo');
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        let activeLink = null;
+        let lastScrollY = window.scrollY;
+
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const target = document.getElementById(link.getAttribute('data-target'));
+                target.scrollIntoView({ behavior: 'auto', block: 'center' });
+                setActiveLink(link);
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.projects section');
+            let currentSection = null;
+            let minDistance = Infinity;
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const sectionCenter = rect.top + rect.height / 2;
+                const distanceFromCenter = Math.abs(sectionCenter - window.innerHeight / 2);
+
+                if (distanceFromCenter < minDistance) {
+                    minDistance = distanceFromCenter;
+                    currentSection = section;
+                }
+            });
+
+            if (currentSection) {
+                const targetLink = document.querySelector(`.sidebar span[data-target="${currentSection.id}"]`);
+                setActiveLink(targetLink);
+            }
+
+            if (window.scrollY > 100 && lastScrollY <= 100) {
+                topLogo.style.opacity = '0';
+                sidebarMenu.style.opacity = '0';
+                document.querySelector('.hamburger').style.opacity = '0';
+            } else if (window.scrollY <= 99 && lastScrollY > 100) {
+                topLogo.style.opacity = '1';
+                sidebarMenu.style.opacity = '1';
+                document.querySelector('.hamburger').style.opacity = '1';
+            }
+
+            lastScrollY = window.scrollY;
+        });
+
+        function setActiveLink(link) {
+            document.querySelectorAll('.sidebar span').forEach(span => {
+                span.style.borderBottom = '1px solid transparent';
+            });
+            if (link) {
+                link.style.borderBottom = '1px solid white';
+                activeLink = link;
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

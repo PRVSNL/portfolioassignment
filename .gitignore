@@ -1,0 +1,13 @@
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.out
+.cache/
+
+
+IMAGES/.DS_Store
+.DS_Store

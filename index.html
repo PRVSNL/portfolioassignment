@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provisional Heavy Industry - Landing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style/index.css" />
+</head>
+
+<body>
+
+  <div class="corner corner-tl"><img src="images/elements/cornerlines.png" class="corner-img"></div>
+  <div class="corner corner-tr"><img src="images/elements/cornerlines.png" class="corner-img"></div>
+  <div class="corner corner-bl"><img src="images/elements/cornerlines.png" class="corner-img"></div>
+  <div class="corner corner-br"><img src="images/elements/cornerlines.png" class="corner-img"></div>
+
+  <main class="landing-container">
+    <img src="images/logos/logo1.svg" class="logo" alt="Logo" />
+    <h1>Provisional Heavy Industry</h1>
+    <div class="divider"></div>
+    <p class="description">HOLD BUTTON TO ACCESS PORTFOLIO OF SAFEGUARD ID: KASPERI</p>
+
+    <div class="hold-shape" id="holdShape">
+      <img src="images/icons/cursor1.png" class="scifi-x" alt="Hold button icon" />
+      <svg viewBox="0 0 225 75" class="shape-svg">
+        <path class="edge-outline" d="M112.5,75 L11.25,75 L0,63.75 L0,11.25 L11.25,0 L112.5,0" />
+        <path class="edge-outline" d="M112.5,75 L213.75,75 L225,63.75 L225,11.25 L213.75,0 L112.5,0" />
+      </svg>
+    </div>
+
+  </main>
+
+  <script>
+    const holdShape = document.getElementById('holdShape');
+    let holdTimer;
+
+    const startHold = (e) => {
+      e.preventDefault();
+      holdShape.classList.add('active');
+      holdTimer = setTimeout(() => {
+        window.location.href = 'about.html';
+      }, 1000);
+    };
+
+    const cancelHold = () => {
+      clearTimeout(holdTimer);
+      holdShape.classList.remove('active');
+    };
+
+    holdShape.addEventListener('mousedown', startHold);
+    ['mouseup', 'mouseleave'].forEach(evt => {
+      holdShape.addEventListener(evt, cancelHold);
+    });
+
+    holdShape.addEventListener('touchstart', startHold);
+    ['touchend', 'touchcancel'].forEach(evt => {
+      holdShape.addEventListener(evt, cancelHold);
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  font-family: "Rajdhani", sans-serif;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+}
+
+.corner-tl {
+  top: 0;
+  left: 0;
+  transform: rotate(90deg);
+}
+.corner-tr {
+  top: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+.corner-bl {
+  bottom: 0;
+  left: 0;
+  transform: rotate(0deg);
+}
+.corner-br {
+  bottom: 0;
+  right: 0;
+  transform: rotate(-90deg);
+}
+
+.corner-img {
+  width: 100%;
+  height: auto;
+}
+
+.landing-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.divider {
+  width: 200px;
+  height: 2px;
+  background-color: #666;
+  margin: 10px auto 20px;
+}
+
+.description {
+  font-size: clamp(14px, 3.5vw, 16px);
+  color: #aaa;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.hold-shape {
+  position: relative;
+  display: inline-block;
+  width: 225px;
+  height: 75px;
+  cursor: pointer;
+  overflow: hidden;
+  background: rgba(51, 51, 51, 0.3);
+  clip-path: polygon(
+    11.25px 0,
+    213.75px 0,
+    225px 11.25px,
+    225px 63.75px,
+    213.75px 75px,
+    11.25px 75px,
+    0 63.75px,
+    0 11.25px
+  );
+}
+
+.scifi-x {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  pointer-events: none;
+}
+
+.shape-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.edge-outline {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  transition: stroke-dashoffset 2s linear;
+}
+
+.hold-shape:active .edge-outline {
+  stroke-dashoffset: 0;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 120px;
+  }
+  .hold-shape {
+    width: 180px;
+    height: 60px;
+  }
+  .scifi-x {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Rajdhani", sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/bg/bg2.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.top-logo {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  z-index: 10;
+}
+
+.top-left-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.top-left-menu .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.top-left-menu .menu-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.top-left-menu .menu-links a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+  .top-left-menu {
+    display: none;
+  }
+}
+
+.id-card-container {
+  width: 100%;
+  max-width: 768px;
+  aspect-ratio: 1 / 1;
+  background: url("../images/elements/idcard.png") no-repeat center center;
+  background-size: contain;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .hamburger {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 25px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 9999;
+  }
+
+  .hamburger div {
+    height: 3px;
+    background-color: #fff;
+  }
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #fff;
+  transform-origin: top right;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.3s ease;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 60px;
+  padding-left: 20px;
+}
+
+.menu-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.menu-links a:hover {
+  opacity: 0.7;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  background: url("../images/icons/cursor2.png") no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.menu-toggle:checked ~ .menu-overlay {
+  width: 180px;
+  height: 250px;
+  opacity: 1;
+}
+
+.menu-toggle:checked ~ .hamburger {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 801px) {
+  .hamburger {
+    display: none;
+  }
+}
